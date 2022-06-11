@@ -25,9 +25,13 @@ public class ChessMatch {
 		return mat;
 	}
 	
+	private void placeNewPiece(ChessPosition chessPosition, ChessPiece piece) {
+		board.placePiece(piece, chessPosition.toPosition());
+	}
+	
 	public void initialSetup() {
-		board.placePiece(new Rook(board, Color.BLACK), new Position(0, 0));
-		board.placePiece(new Rook(board, Color.BLACK), new Position(0, 7));
-		board.placePiece(new King(board, Color.BLACK), new Position(0, 4));
+		placeNewPiece(new ChessPosition('a', 8), new Rook(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('a', 8), new Rook(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('a', 8), new King(board, Color.BLACK));
 	}
 }
