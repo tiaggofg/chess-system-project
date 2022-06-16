@@ -19,9 +19,9 @@ public class Program {
 			System.out.print("\nSource: ");
 			ChessPosition source = UI.readChessPosition(scanner);
 			
-			System.out.print("\nTarget: ");
+			System.out.print("Target: ");
 			ChessPosition target = UI.readChessPosition(scanner);
-			
+			System.out.println();
 			ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
 		}
 	}

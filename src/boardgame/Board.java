@@ -51,8 +51,10 @@ public class Board {
 		} else if (piece(position) == null) {
 			return null;
 		} else {
+			Piece aux = piece[position.getRow()][position.getColumn()];
+			aux.position = null;
 			piece[position.getRow()][position.getColumn()] = null;
-			return piece[position.getRow()][position.getColumn()];
+			return aux;
 		}
 	}
 	

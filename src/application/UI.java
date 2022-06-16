@@ -40,7 +40,7 @@ public class UI {
 		try {
 			String position = sc.nextLine();
 			char column = position.charAt(0);
-			int row = (int)position.charAt(1);
+			int row = Integer.parseInt(position.substring(1));
 			return new ChessPosition(column, row);
 		} catch (RuntimeException e) {
 			throw new InputMismatchException("Error reading chess position. Valid values are from a1 to h8.");
