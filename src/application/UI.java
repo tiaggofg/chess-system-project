@@ -3,12 +3,7 @@ package application;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import java.util.Scanner;
-import chess.ChessPosition;
-
-import java.util.Scanner;
-import chess.ChessPosition;
-
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 import chess.color.Color;
@@ -16,7 +11,6 @@ import chess.color.Color;
 public class UI {
 	
 	// https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
-
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
 	public static final String ANSI_RED = "\u001B[31m";
@@ -73,6 +67,18 @@ public class UI {
 			System.out.println();
 		}
 		System.out.print("  a b c d e f g h\n");
+	}
+	
+	public static void printMatch(ChessMatch chessMatch) {
+		printBoard(chessMatch.getPieces());
+		System.out.print("\nTurn: " + chessMatch.getTurn());
+		System.out.print("\nWaiting player: " + chessMatch.getCurrentPlayer());
+	}
+	
+	public static void printMatch(ChessMatch chessMatch, boolean[][] possibleMoves) {
+		printBoard(chessMatch.getPieces(), possibleMoves);
+		System.out.print("\nTurn: " + chessMatch.getTurn());
+		System.out.print("\nWaiting player: " + chessMatch.getCurrentPlayer());
 	}
 	
 	public static void printPiece(ChessPiece piece, boolean background) {
