@@ -9,6 +9,7 @@ import boardgame.Piece;
 import boardgame.Position;
 import chess.color.Color;
 import chess.pieces.King;
+import chess.pieces.Pawn;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -108,10 +109,25 @@ public class ChessMatch {
 		}
 	}
 
+	private boolean hasEnemyPiece(Position p) {
+		if (currentPlayer != (((ChessPiece) board.piece(p)).getColor())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	
+	public void validateSourcePosition(ChessPosition source) {
+		if (hasEnemyPiece(source.toPosition())) {
+			throw new ChessException("The chosen piece is not yours");
+		}
+	}
+	
 	private void validateSourcePosition(Position source) {
 		if (!board.thereIsAPiece(source)) {
 			throw new ChessException("There is no piece on source position.");
-		} else if (currentPlayer != ((ChessPiece) board.piece(source)).getColor()) {
+		} else if (hasEnemyPiece(source)) {
 			throw new ChessException("The chosen piece is not yours");
 		} else if (!board.piece(source).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible moves for the chosen piece!");
@@ -187,12 +203,28 @@ public class ChessMatch {
 			return true;
 		}).findFirst().get();
 	}
-
+	
 	public void initialSetup() {
-		placeNewPiece(new ChessPosition('h', 7), new Rook(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('a', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('b', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('c', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('d', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('e', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('f', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('g', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('h', 2), new Pawn(board, Color.WHITE));
+		placeNewPiece(new ChessPosition('h', 1), new Rook(board, Color.WHITE));
         placeNewPiece(new ChessPosition('d', 1), new Rook(board, Color.WHITE));
         placeNewPiece(new ChessPosition('e', 1), new King(board, Color.WHITE));
         
+        placeNewPiece(new ChessPosition('a', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('b', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('c', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('d', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('e', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('f', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('g', 7), new Pawn(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('h', 7), new Pawn(board, Color.BLACK));
         placeNewPiece(new ChessPosition('b', 8), new Rook(board, Color.BLACK));
         placeNewPiece(new ChessPosition('a', 8), new King(board, Color.BLACK));
 	}
