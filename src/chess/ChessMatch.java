@@ -8,6 +8,7 @@ import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
 import chess.color.Color;
+import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Pawn;
 import chess.pieces.Rook;
@@ -116,7 +117,6 @@ public class ChessMatch {
 			return false;
 		}
 	}
-
 	
 	public void validateSourcePosition(ChessPosition source) {
 		if (hasEnemyPiece(source.toPosition())) {
@@ -214,8 +214,10 @@ public class ChessMatch {
 		placeNewPiece(new ChessPosition('g', 2), new Pawn(board, Color.WHITE));
 		placeNewPiece(new ChessPosition('h', 2), new Pawn(board, Color.WHITE));
 		placeNewPiece(new ChessPosition('h', 1), new Rook(board, Color.WHITE));
-        placeNewPiece(new ChessPosition('d', 1), new Rook(board, Color.WHITE));
-        placeNewPiece(new ChessPosition('e', 1), new King(board, Color.WHITE));
+        placeNewPiece(new ChessPosition('a', 1), new Rook(board, Color.WHITE));
+        placeNewPiece(new ChessPosition('d', 1), new King(board, Color.WHITE));
+        placeNewPiece(new ChessPosition('c', 1), new Bishop(board, Color.WHITE));
+        placeNewPiece(new ChessPosition('f', 1), new Bishop(board, Color.WHITE));
         
         placeNewPiece(new ChessPosition('a', 7), new Pawn(board, Color.BLACK));
 		placeNewPiece(new ChessPosition('b', 7), new Pawn(board, Color.BLACK));
@@ -225,7 +227,10 @@ public class ChessMatch {
 		placeNewPiece(new ChessPosition('f', 7), new Pawn(board, Color.BLACK));
 		placeNewPiece(new ChessPosition('g', 7), new Pawn(board, Color.BLACK));
 		placeNewPiece(new ChessPosition('h', 7), new Pawn(board, Color.BLACK));
-        placeNewPiece(new ChessPosition('b', 8), new Rook(board, Color.BLACK));
-        placeNewPiece(new ChessPosition('a', 8), new King(board, Color.BLACK));
+		placeNewPiece(new ChessPosition('h', 8), new Rook(board, Color.BLACK));
+        placeNewPiece(new ChessPosition('a', 8), new Rook(board, Color.BLACK));
+        placeNewPiece(new ChessPosition('d', 8), new King(board, Color.BLACK));
+        placeNewPiece(new ChessPosition('c', 8), new Bishop(board, Color.BLACK));
+        placeNewPiece(new ChessPosition('f', 8), new Bishop(board, Color.BLACK));
 	}
 }
