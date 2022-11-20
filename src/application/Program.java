@@ -26,7 +26,7 @@ public class Program {
 				System.out.print("\nSource: ");
 				ChessPosition source = UI.readChessPosition(scanner);
 				
-				chessMatch.validateSourcePosition(source);
+				chessMatch.verifyHasEnemyPiece(source);
 				
 				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
